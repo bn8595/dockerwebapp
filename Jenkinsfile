@@ -1,10 +1,10 @@
 node {
 
-    stage('checkout scm')
-    {
-        docker.withRegistry('https://registry.hub.docker.com', 'bn8595') {
+    checkout scm
 
-        def customImage = docker.build("bn8595/dockerwebapp")
+    docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
+
+        def customImage = docker.build("miltonc/dockerwebapp")
 
         /* Push the container to the custom Registry */
         customImage.push()
