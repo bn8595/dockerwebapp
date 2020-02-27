@@ -31,5 +31,10 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
        }
     }
+    stage('Run Container') {
+      steps {
+        docker run -d -name nodeapp nodejs
+      }
+    }     
   }
 }
