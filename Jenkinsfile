@@ -1,8 +1,7 @@
 pipeline {
   environment {
     registry = "bn8595/dockerwebapp"
-    registryCredential = 'bn8595'
-    dockerImage = ''
+    registryCredential = "bn8595"
   }
   agent any
   stages {
@@ -27,7 +26,10 @@ pipeline {
         }
       }
     }
-    
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
     }
   }
 }
