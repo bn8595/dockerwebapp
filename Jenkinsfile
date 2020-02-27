@@ -33,7 +33,7 @@ pipeline {
     }
     stage('Run Container') {
       steps {
-        sh "docker run -d --name nodeapp nodejs"
+        sh "docker run -d --name bn8595/dockerwebapp"
       }
     }     
   }
