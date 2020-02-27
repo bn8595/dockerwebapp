@@ -14,6 +14,7 @@ RUN npm install
 
 # Bundle app source
 COPY . .
-
+ENV CustomENVVar="This is Sample" \
+    AnotherCustomEnvVar="This is also Sample"
 EXPOSE 8090
 CMD [ "node", "server.js" ]
