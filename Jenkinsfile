@@ -17,6 +17,15 @@ pipeline {
         }
       }
     }
+    stage('Test Image') {
+      steps{
+        scripts{
+          dockerImage.inside{
+            sh 'echo "Test Image"'
+          }
+        }
+      }
+    }
     stage('Deploy Image') {
       steps{
         script {
@@ -31,10 +40,10 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
        }
     }
-    stage('Run Container') {
-      steps {
-        sh "docker run -d --name bn8595/dockerwebapp"
-      }
-    }     
+    /*stage('Run Container') {
+     /* steps {
+      /*  sh "docker run -d --name bn8595/dockerwebapp"
+     /* }
+    /*}     
   }
 }
